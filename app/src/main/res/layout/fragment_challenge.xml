@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.views.fragment.challenge.ChallengesFragment" />
+
+        <variable
+            name="type"
+            type="com.applaunch.bgm.model.dto.challenge_data.CheckChallengeDataModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.fragment.challenge.ChallengesFragment">
+
+        <View
+            android:id="@+id/vChallenge"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_364dp"
+            android:background="@color/drax"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvChallenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_51dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/challenges"
+            android:textColor="@color/white"
+            android:textSize="@dimen/margin_30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_24dp"
+            app:layout_constraintTop_toBottomOf="@id/tvChallenge">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_80sdp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/clStep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    app:cardCornerRadius="@dimen/_16sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/ivStep"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/margin_280dp"
+                            android:foreground="@drawable/ic_rectangle_forground"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/challenge_1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_16dp"
+                            android:layout_marginEnd="@dimen/margin_16dp"
+                            android:layout_marginBottom="@dimen/margin_17dp"
+                            app:layout_constraintBottom_toBottomOf="@id/ivStep"
+                            app:layout_constraintEnd_toEndOf="@id/ivStep"
+                            app:layout_constraintStart_toStartOf="@id/ivStep">
+
+                            <TextView
+                                android:id="@+id/tvStepTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="@string/step_challenges"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/margin_24sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvStepType"
+                                style="@style/TypeText"
+                                android:layout_marginTop="@dimen/margin_16dp"
+                                android:text="@string/step"
+                                android:textColor="@color/white_80_percent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvStepTitle" />
+
+                            <TextView
+                                android:id="@+id/tvStepStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_16dp"
+                                android:background="@drawable/bg_live"
+                                android:fontFamily="@font/inter_semi_bold"
+                                android:onClick='@{()->clickListener.onClick("steps")}'
+                                android:paddingHorizontal="@dimen/_50sdp"
+                                android:paddingVertical="@dimen/_8sdp"
+                                android:text="@string/start"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/margin_12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvStepType" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/clRelax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/_100sdp"
+                    app:cardCornerRadius="@dimen/_16sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clStep">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/ivRelax"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/margin_280dp"
+                            android:foreground="@drawable/ic_rectangle_forground"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/challenge_2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_16dp"
+                            android:layout_marginEnd="@dimen/margin_16dp"
+                            android:layout_marginBottom="@dimen/margin_17dp"
+                            app:layout_constraintBottom_toBottomOf="@id/ivRelax"
+                            app:layout_constraintEnd_toEndOf="@id/ivRelax"
+                            app:layout_constraintStart_toStartOf="@id/ivRelax">
+
+                            <TextView
+                                android:id="@+id/tvRelaxTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="@string/relaxation"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/margin_24sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvRelaxType"
+                                style="@style/TypeText"
+                                android:layout_marginTop="@dimen/margin_16dp"
+                                android:text="@string/relaxation"
+                                android:textColor="@color/white_80_percent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvRelaxTitle" />
+
+                            <TextView
+                                android:id="@+id/tvRelaxStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_16dp"
+                                android:background="@drawable/bg_live"
+                                android:fontFamily="@font/inter_semi_bold"
+                                android:onClick='@{()->clickListener.onClick("relax")}'
+                                android:paddingHorizontal="@dimen/_50sdp"
+                                android:paddingVertical="@dimen/_8sdp"
+                                android:text="@string/start"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/margin_12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvRelaxType" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

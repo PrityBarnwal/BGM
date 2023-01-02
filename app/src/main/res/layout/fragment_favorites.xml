@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="FragmentFavoritesBinding">
+
+        <variable
+            name="crossIcon"
+            type="Boolean" />
+
+        <import type="android.view.View"/>
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.views.fragment.favorite.FavoriteFragment" />
+
+        <variable
+            name="dataNotFound"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/screen_background"
+        tools:context=".old.ui.favorites.FavoritesFragment">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_178dp"
+            android:background="@color/drax"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvFavorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_51dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/favorites"
+            android:textColor="@color/white"
+            android:textSize="@dimen/margin_30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etFavoritesSearch"
+            style="@style/Search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFavorites" />
+
+        <ImageView
+            android:id="@+id/ivDeleteSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:background="@drawable/bg_plus"
+            android:onClick="@{clickListener::clearData}"
+            android:padding="@dimen/margin_4dp"
+            android:src="@drawable/ic_cross_white"
+            android:visibility="@{crossIcon ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/etFavoritesSearch"
+            app:layout_constraintEnd_toEndOf="@id/etFavoritesSearch"
+            app:layout_constraintTop_toTopOf="@id/etFavoritesSearch" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/margin_12dp"
+            android:layout_marginTop="@dimen/margin_35dp"
+            android:layout_marginBottom="@dimen/margin_80dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view"
+            app:spanCount="2"
+            tools:listitem="@layout/item_list_favorites" />
+
+        <TextView
+            android:id="@+id/tvDataNotFound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_100dp"
+            android:drawablePadding="@dimen/margin_25dp"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="@string/no_search_results"
+            android:textAlignment="center"
+            android:textColor="@color/dark_black_50_percent"
+            android:textSize="@dimen/margin_15sp"
+            android:visibility="@{dataNotFound ? View.VISIBLE : View.INVISIBLE}"
+            app:drawableTopCompat="@drawable/ic_search_not_found"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "126561149729",
+    "project_id": "bgm-ce02c",
+    "storage_bucket": "bgm-ce02c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126561149729:android:ef3d445139b5537e3cd460",
+        "android_client_info": {
+          "package_name": "com.applaunch.bgm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126561149729-467nv3mhe9ogc0cja7hnaedth2f6m8p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaSOus8WlSDvPqc36gYd3mPB9LJR8iS7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126561149729-467nv3mhe9ogc0cja7hnaedth2f6m8p1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.applaunch.bgm.utils.MyUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="meetList"
+            type="com.applaunch.bgm.model.dto.meet_data.MeetDataModel" />
+
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.adapter.recycler.viewholder.MeetViewHolder" />
+
+        <variable
+            name="streamType"
+            type="String" />
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="isBgSelected"
+            type="Boolean" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/clMediathek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        android:background="@{isBgSelected?@drawable/bg_item_selected:@drawable/bg_item_unselected}"
+        android:onClick="@{()-> clickListener.onBgChange(meetList,position)}"
+        app:cardCornerRadius="@dimen/margin_16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivMedia"
+                app:imageUrl="@{meetList.image}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_343dp"
+                android:onClick="@{()->clickListener.navigateToArticle(meetList,position,streamType)}"
+                android:foreground="@drawable/ic_rectangle_forground"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/playBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_video"
+                android:visibility='@{streamType == "video" ? View.VISIBLE : View.GONE}'
+                app:layout_constraintBottom_toBottomOf="@id/ivMedia"
+                app:layout_constraintEnd_toEndOf="@id/ivMedia"
+                app:layout_constraintStart_toStartOf="@id/ivMedia"
+                app:layout_constraintTop_toTopOf="@id/ivMedia" />
+
+            <ImageView
+                android:id="@+id/ivfavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_14dp"
+                android:layout_marginEnd="@dimen/margin_14dp"
+                android:background="@drawable/bg_favorite"
+                android:padding="@dimen/margin_10dp"
+                android:src="@{meetList.favorite ? @drawable/ic_favorite_selected :  @drawable/ic_favorite_unselected}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_32dp"
+                android:layout_marginBottom="@dimen/margin_48dp"
+                app:layout_constraintBottom_toBottomOf="@id/ivMedia"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/tvMediaTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@{meetList.title}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/margin_24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/rehazentrum_straubing_dr_hierl" />
+
+                <TextView
+                    android:id="@+id/tvMediaType"
+                    style="@style/TypeText"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:text="@{meetList.streamType ?? meetList.writtenBy}"
+                    android:textColor="@color/white_80_percent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMediaTitle"
+                    tools:text="@string/webinar" />
+
+                <ImageView
+                    android:id="@+id/ivDot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:src="@drawable/ic_oval"
+                    app:layout_constraintBottom_toBottomOf="@id/tvMediaType"
+                    app:layout_constraintStart_toEndOf="@id/tvMediaType"
+                    app:layout_constraintTop_toTopOf="@id/tvMediaType" />
+
+                <TextView
+                    android:id="@+id/tvCategory"
+                    style="@style/TypeText"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:text="@{MyUtils.convertDate(meetList.date)}"
+                    android:textColor="@color/white_80_percent"
+                    app:layout_constraintBottom_toBottomOf="@id/ivDot"
+                    app:layout_constraintStart_toEndOf="@id/ivDot"
+                    app:layout_constraintTop_toTopOf="@id/ivDot"
+                    tools:text="@string/total_viewers" />
+
+                <TextView
+                    android:id="@+id/liveStreaming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:background="@drawable/bg_live"
+                    android:drawablePadding="@dimen/margin_4dp"
+                    android:fontFamily="@font/inter_semi_bold"
+                    android:padding="@dimen/margin_8dp"
+                    android:text="@string/live_broadcast"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/margin_12sp"
+                    android:onClick="@{clickListener::navigateToBroadcast}"
+                    android:visibility='@{streamType == "webinar" ? View.VISIBLE : View.GONE}'
+                    app:drawableStartCompat="@drawable/ic_live_circle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMediaType"
+                    tools:text="@string/live_broadcast" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvMediaThekLikes"
+                style="@style/Likes"
+                android:layout_marginHorizontal="@dimen/margin_17dp"
+                android:layout_marginVertical="@dimen/margin_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivMedia"
+                app:setLikes="@{meetList.totalLikes}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

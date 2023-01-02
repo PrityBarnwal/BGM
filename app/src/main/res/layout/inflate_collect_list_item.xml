@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="CollectionListItemBinding">
+
+        <variable
+            name="data"
+            type="com.applaunch.bgm.model.dto.collection_list.CollectListData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/sivSaveFavorite"
+            android:layout_width="@dimen/margin_100dp"
+            android:layout_height="@dimen/margin_100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/favorite_img_1"
+            app:imageUrl="@{data.coverImage ?? ``}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:radiusCenterCrop="@{15}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{data.collectionName}"
+            android:textColor="@color/dark_black"
+            android:textSize="@dimen/margin_17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sivSaveFavorite"
+            tools:text="All Favorites" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

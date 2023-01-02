@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="OnboardingFragmentBinding">
+
+        <import type="com.applaunch.bgm.utils.Constant" />
+
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.views.fragment.onboard.OnBoardingFragment" />
+
+        <variable
+            name="position"
+            type="int" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.applaunch.bgm.views.fragment.onboard.OnBoardingFragment">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_58dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:background="@drawable/bg_skip"
+            android:fontFamily="@font/inter_semi_bold"
+            android:onClick="@{clickListener::onSkipClicked}"
+            android:paddingHorizontal="@dimen/margin_12dp"
+            android:paddingVertical="@dimen/margin_5dp"
+            android:text="@string/skip"
+            android:textColor="@color/dark_black"
+            android:textSize="@dimen/margin_13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/dotIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_24dp"
+            android:layout_marginBottom="@dimen/margin_66dp"
+            app:dotsColor="@color/dark_black_50_percent"
+            app:dotsCornerRadius="@dimen/margin_40dp"
+            app:dotsSize="@dimen/margin_8dp"
+            app:dotsSpacing="@dimen/margin_4dp"
+            app:dotsWidthFactor="5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:selectedDotColor="@color/dark_black" />
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/margin_70dp"
+            android:layout_height="@dimen/margin_70dp"
+            android:layout_marginEnd="@dimen/margin_11dp"
+            android:indeterminateOnly="false"
+            android:progress="@{position == Constant.Count.zero ? 33 : position == Constant.Count.one ? 66:100 }"
+            android:progressDrawable="@drawable/progress_circle"
+            app:layout_constraintBottom_toBottomOf="@id/dotIndicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/dotIndicator" />
+
+        <ImageView
+            android:id="@+id/ivNext"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_next_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="@id/progressBar"
+            app:layout_constraintStart_toStartOf="@id/progressBar"
+            app:layout_constraintTop_toTopOf="@id/progressBar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

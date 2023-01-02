@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clAlert"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_40dp"
+            android:background="@drawable/bg_dialog"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvDialogContent"
+                style="@style/HeadingTextSemiBold"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/margin_24dp"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:textAlignment="center"
+                tools:text="@string/are_you_sure_you_want_to_remove_it_from_favorites"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvContentSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:fontFamily="@font/inter_regular"
+                android:textSize="@dimen/margin_15sp"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:text="@string/bookmark_content"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDialogContent" />
+
+            <View
+                android:id="@+id/vSeparator1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:background="@color/separator_color"
+                app:layout_constraintTop_toBottomOf="@+id/tvContentSetting" />
+
+            <TextView
+                android:id="@+id/tvYes"
+                android:paddingVertical="@dimen/margin_11dp"
+                android:text="@string/yes"
+                android:textColor="@color/red"
+                style="@style/HeadingTextSemiBold"
+                app:layout_constraintEnd_toStartOf="@+id/vSeparator2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vSeparator1" />
+
+            <View
+                android:id="@+id/vSeparator2"
+                android:layout_width="0.5dp"
+                android:layout_height="44dp"
+                android:background="@color/separator_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vSeparator1" />
+
+            <TextView
+                android:id="@+id/tvNo"
+                style="@style/HeadingTextSemiBold"
+                android:paddingVertical="@dimen/margin_11dp"
+                android:text="@string/no"
+                android:textColor="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/vSeparator2"
+                app:layout_constraintTop_toBottomOf="@+id/vSeparator1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

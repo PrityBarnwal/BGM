@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="FragmentVideoFullScreenBinding">
+
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.views.fragment.home.HomeVideoFragment" />
+
+        <variable
+            name="isFavorite"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".old.ui.home.VideoFullScreenFragment">
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/playerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/background_dark"
+            app:controller_layout_id="@layout/custom_video_controller"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:player_layout_id="@layout/exo_player_view"
+            app:use_controller="true" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/margin_80dp"
+            android:layout_height="@dimen/margin_80dp"
+            android:indeterminateTint="@color/screen_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivVideoBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_24dp"
+            android:layout_marginTop="@dimen/margin_24dp"
+            android:onClick="@{clickListener::backPressed}"
+            android:padding="@dimen/margin_4dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvVideoTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_8dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/rehazentrum_straubing_dr_hierl"
+            android:textColor="@color/white"
+            android:textSize="@dimen/margin_18sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivVideoFavorite"
+            app:layout_constraintStart_toEndOf="@id/ivVideoBack"
+            app:layout_constraintTop_toTopOf="@id/ivVideoBack" />
+
+        <ImageView
+            android:id="@+id/ivVideoFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_24dp"
+            android:padding="@dimen/margin_4dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@{isFavorite ? @drawable/ic_favorite_video_selected: @drawable/ic_favorite_video_unselected}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnFullScreen"
+            android:layout_width="@dimen/margin_30dp"
+            android:layout_height="@dimen/margin_30dp"
+            android:layout_marginBottom="@dimen/margin_30dp"
+            android:onClick="@{clickListener::fullScreen}"
+            android:src="@drawable/ic_maximize"
+            android:theme="@style/ClickableView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

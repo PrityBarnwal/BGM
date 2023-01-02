@@ -1,0 +1,38 @@
+image: feeni/node-chrome:latest
+
+# Add extra step to increase the memory limits available on bitbucket pipeline
+options:
+  docker: true
+  size: 2x
+
+clone:
+  depth: full
+
+definitions:
+  caches:
+    sonar: ~/.sonar/cache
+  services:
+    docker:
+      memory: 4096
+  steps:
+    - step: &build-test-sonarcloud
+        name: Build, test and analyze on SonarCloud
+        caches:
+          - node
+          - sonar
+        services:
+          - docker
+        script:
+          - npm install --quiet
+          # - npm run test -- --code-coverage --no-watch --no-progress --browsers=ChromeHeadlessNoSandbox
+          - pipe: sonarsource/sonarcloud-scan:1.4.0
+          - pipe: sonarsource/sonarcloud-quality-gate:0.1.6
+            variables:
+              SONAR_TOKEN: ${SONAR_TOKEN}
+              EXTRA_ARGS: '-Dsonar.source=./ -Dsonar.exclusions=**/*.java, android/** -Dsonar.java.binaries=target/**/*.java -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info'
+pipelines:
+  default:
+    - step: *build-test-sonarcloud
+  pull-requests:
+    '**':
+      - step: *build-test-sonarcloud

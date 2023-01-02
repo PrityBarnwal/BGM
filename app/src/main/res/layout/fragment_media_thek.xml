@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="FragmentMediaThekBinding">
+
+        <import type="android.view.View" />
+
+        <variable
+            name="crossIcon"
+            type="Boolean" />
+
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.views.fragment.meet.MeetFragment" />
+
+        <variable
+            name="dataNotFound"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/screen_background"
+        tools:context=".old.ui.mediathek.MediaThekFragment">
+
+        <View
+            android:id="@+id/vMediathek"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_329dp"
+            android:background="@color/drax"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/vSearch"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_178dp"
+            android:background="@color/drax"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_51dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/meet"
+            android:textColor="@color/white"
+            android:textSize="@dimen/margin_30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiAllMedia"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_53dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:endIconDrawable="@drawable/ic_arrow_down"
+            app:endIconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/atMedia"
+                style="@style/AllArticle"
+                android:onClick="@{clickListener::allMedia}"
+                android:inputType="none"
+                android:padding="@dimen/margin_1dp"
+                android:text="@string/all_media" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etMediaSearch"
+            style="@style/Search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tiAllMedia" />
+
+        <ImageView
+            android:id="@+id/ivDeleteSearchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:background="@drawable/bg_plus"
+            android:onClick="@{clickListener::clearData}"
+            android:padding="@dimen/margin_4dp"
+            android:src="@drawable/ic_cross_white"
+            android:visibility="@{crossIcon ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/etMediaSearch"
+            app:layout_constraintEnd_toEndOf="@id/etMediaSearch"
+            app:layout_constraintTop_toTopOf="@id/etMediaSearch" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recMediaThek"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_32dp"
+            android:layout_marginBottom="@dimen/margin_80dp"
+            android:orientation="vertical"
+            android:visibility="@{dataNotFound ? View.INVISIBLE : View.VISIBLE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etMediaSearch"
+            tools:listitem="@layout/item_list_mediathek" />
+
+        <TextView
+            android:id="@+id/tvSearchNotFound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_100dp"
+            android:drawablePadding="@dimen/margin_25dp"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="@string/no_search_results"
+            android:textAlignment="center"
+            android:textColor="@color/dark_black_50_percent"
+            android:textSize="@dimen/margin_15sp"
+            android:visibility="@{dataNotFound ? View.VISIBLE : View.INVISIBLE}"
+            app:drawableTopCompat="@drawable/ic_search_not_found"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vSearch" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

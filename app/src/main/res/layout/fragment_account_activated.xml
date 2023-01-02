@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.views.fragment.account_activated.AccountActivatedFragment" />
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.fragment.account_activated.AccountActivatedFragment">
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_230dp"
+            android:background="@drawable/bg_profile"
+            android:padding="@dimen/margin_35dp"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAccessHeading"
+            style="@style/HeadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_42dp"
+            tools:text="@string/account_activated"
+            android:text="@{title}"
+            android:textSize="@dimen/margin_24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivProfile" />
+
+        <TextView
+            android:id="@+id/tvSuccessFullyContent"
+            style="@style/ContentText_400"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/draxlmaier_munich_marketing_department"
+            android:textSize="@dimen/margin_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAccessHeading" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnActivatedContinue"
+            style="@style/Button"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="@dimen/margin_24dp"
+            android:layout_marginBottom="@dimen/margin_42dp"
+            android:background="@drawable/bg_continue_selected"
+            android:text="@string/proceed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

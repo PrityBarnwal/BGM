@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.adapter.recycler.viewholder.FavoriteViewHolder" />
+        <variable
+            name="favoriteList"
+            type="com.applaunch.bgm.model.dto.favorite_data.FavoriteDataModel" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="image1"
+            type="String" />
+
+
+        <variable
+            name="image2"
+            type="String" />
+
+
+        <variable
+            name="image3"
+            type="String" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clCollection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_4dp"
+        android:layout_marginBottom="@dimen/margin_24dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_168dp"
+            app:cardCornerRadius="@dimen/margin_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{() -> clickListener.itemClick(favoriteList,position)}"
+                android:background="@color/almost_black">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivFavorite1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:scaleType="fitXY"
+                    android:visibility="@{image1 == null ? View.GONE : View.VISIBLE}"
+                    app:imageUrl="@{image1 ?? ``}"
+                    app:layout_constraintBottom_toTopOf="@id/ivFavorite2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivFavorite2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:scaleType="fitXY"
+                    android:visibility="@{ image2 == null ? View.GONE : View.VISIBLE}"
+                    app:imageUrl="@{image2 ?? ``}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ivFavorite3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivFavorite1" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivFavorite3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:scaleType="fitXY"
+                    android:visibility="@{ image3 == null ?  View.GONE : View.VISIBLE}"
+                    app:imageUrl="@{image3 ?? ``}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivFavorite2"
+                    app:layout_constraintTop_toBottomOf="@id/ivFavorite1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvTitleFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:fontFamily="@font/inter_medium"
+            android:textColor="@color/dark_black"
+            android:textSize="@dimen/margin_17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvFavorite"
+            tools:text="All Favorites" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

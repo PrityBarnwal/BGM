@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HeadingText">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textColor">@color/dark_black</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="ContentText">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textColor">@color/dark_black_50_percent</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/margin_30sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="TypeText">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">@dimen/margin_12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="ContentText_400">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textColor">@color/dark_black_50_percent</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="HeadingTextSemiBold">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/margin_17sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="Back">
+        <item name="android:src">@drawable/ic_back</item>
+        <item name="android:padding">@dimen/margin_8dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/margin_16dp</item>
+        <item name="android:layout_marginTop">@dimen/margin_60dp</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/margin_17sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="DescriptionText">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">@dimen/margin_14sp</item>
+        <item name="android:textColor">@color/dark_black</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:lineSpacingExtra">@dimen/margin_3dp</item>
+        <item name="android:layout_marginStart">@dimen/margin_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_16dp</item>
+    </style>
+
+    <style name="CategoryText">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/margin_12sp</item>
+        <item name="android:textColor">@color/drax</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="Button" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/margin_17sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">@dimen/margin_16dp</item>
+    </style>
+
+    <style name="BottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+    </style>
+
+    <style name="Search">
+        <item name="android:inputType">text</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:textSize">@dimen/margin_16sp</item>
+        <item name="android:background">@drawable/bg_search</item>
+        <item name="android:hint">@string/search</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:drawableStart">@drawable/ic_search_icon</item>
+        <item name="android:drawablePadding">@dimen/margin_8dp</item>
+        <item name="android:textColorHint">@color/light_grey</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/margin_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_16dp</item>
+        <item name="android:layout_marginTop">@dimen/margin_19dp</item>
+        <item name="android:paddingStart">@dimen/margin_16dp</item>
+        <item name="android:paddingEnd">@dimen/margin_16dp</item>
+        <item name="android:paddingTop">@dimen/margin_12dp</item>
+        <item name="android:paddingBottom">@dimen/margin_12dp</item>
+    </style>
+
+    <style name="Likes">
+        <item name="android:textSize">@dimen/margin_12sp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textColor">@color/dark_black_50_percent</item>
+        <item name="android:drawablePadding">@dimen/margin_10dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="AllArticle">
+        <item name="android:textSize">@dimen/margin_15sp</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textColor">@color/screen_background</item>
+        <item name="android:drawablePadding">@dimen/margin_4dp</item>
+        <item name="android:background">@drawable/bg_all_article</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="ThemeOverlay.BottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">@style/EB.ShapeAppearanceBottomSheetDialog</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="EB.ShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerSizeTopRight">@dimen/margin_16dp</item>
+        <item name="cornerSizeTopLeft">@dimen/margin_16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="ShapeAbleImageView" parent="">
+        <item name="cornerSizeTopRight">@dimen/margin_14dp</item>
+        <item name="cornerSizeTopLeft">@dimen/margin_14dp</item>
+    </style>
+
+    <style name="ShapeAbleCardView" parent="">
+        <item name="cornerSizeTopRight">@dimen/margin_16dp</item>
+        <item name="cornerSizeTopLeft">@dimen/margin_16dp</item>
+        <item name="cornerSizeBottomLeft">@dimen/margin_16dp</item>
+        <item name="cornerSizeBottomRight">@dimen/margin_16dp</item>
+    </style>
+
+    <style name="TimingEditText" parent="">
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:layout_marginTop">@dimen/margin_8dp</item>
+        <item name="android:layout_height">@dimen/margin_64dp</item>
+        <item name="android:layout_width">@dimen/margin_64dp</item>
+    </style>
+
+    <style name="TimingBelowText" parent="">
+        <item name="android:textSize">@dimen/margin_14sp</item>
+        <item name="android:textColor">@color/dark_black</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_marginTop">@dimen/margin_4dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="TimingInNumber" parent="">
+        <item name="android:textSize">@dimen/margin_32sp</item>
+        <item name="android:textColor">@color/drax</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:layout_marginTop">@dimen/margin_4dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/dark_blur</item>
+    </style>
+
+    <style name="TextInputLayout">
+        <item name="android:textColorHint">@color/dark_black_40_percent</item>
+        <item name="hintTextColor">@color/grey</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_marginStart">@dimen/margin_24dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_24dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="TextInputEditText">
+        <item name="android:cursorVisible">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/margin_17sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="CollectionCorner" parent="">
+        <item name="cornerSize">25%</item>
+    </style>
+
+    <style name="ClickableView">
+        <item name="colorControlHighlight">@color/dark_blur</item>
+        <item name="background">?selectableItemBackgroundBorderless</item>
+    </style>
+</resources>

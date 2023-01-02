@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="webinarType"
+            type="String" />
+        <variable
+            name="webinarList"
+            type="com.applaunch.bgm.model.dto.webinar_data.WebinarDescriptionModel" />
+
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20dp">
+
+        <TextView
+            android:id="@+id/tvDescriptionWebinar"
+            style="@style/DescriptionText"
+            android:text="@{webinarList.content}"
+            android:visibility='@{webinarType == "text" ? View.VISIBLE : View.GONE}'
+            tools:text="@string/content_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/sivWebinar"
+            android:layout_width="match_parent"
+            android:layout_height="246dp"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:scaleType="centerCrop"
+            android:visibility='@{webinarType == "image" ? View.VISIBLE : View.GONE}'
+            app:imageUrl="@{webinarList.content}"
+            app:layout_constraintTop_toBottomOf="@id/tvDescriptionWebinar"
+            app:shapeAppearanceOverlay="@style/ShapeAbleCardView" />
+
+        <TextView
+            android:id="@+id/tvImageDescription"
+            style="@style/DescriptionText"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:text="@{webinarList.content}"
+            android:visibility='@{webinarType == "paragraph" ? View.VISIBLE : View.GONE}'
+            tools:text="@string/content_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sivWebinar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

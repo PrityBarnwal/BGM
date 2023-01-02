@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="FragmentArticleBinding">
+
+        <variable
+            name="articleContent"
+            type="com.applaunch.bgm.model.dto.article_data.ArticleDataModel" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/screen_background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/screen_background">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clArticleOpenLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivArticle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_364dp"
+                    android:layout_marginBottom="-40dp"
+                    android:foreground="@drawable/ic_rectangle_forground"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{articleContent.image ?? ``}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivArticleBack"
+                    style="@style/Back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivArticleFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:background="@drawable/bg_favorite"
+                    android:padding="@dimen/margin_10dp"
+                    android:src="@{articleContent.isFavorite ? @drawable/ic_favorite_selected: @drawable/ic_favorite_unselected}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_32dp"
+                android:layout_marginBottom="@dimen/margin_20dp"
+                app:layout_constraintBottom_toTopOf="@id/clArticleOpenLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/tvArticleTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@{articleContent.title}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/margin_24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/Proteishakes_without_protein_powder" />
+
+                <TextView
+                    android:id="@+id/tvArticleType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="@{articleContent.writtenBy}"
+                    android:textColor="@color/white_80_percent"
+                    android:textSize="@dimen/margin_12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvArticleTitle"
+                    tools:text="@string/amanda_parker" />
+
+                <ImageView
+                    android:id="@+id/ivDot"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:src="@drawable/ic_oval"
+                    app:layout_constraintBottom_toBottomOf="@id/tvArticleType"
+                    app:layout_constraintStart_toEndOf="@id/tvArticleType"
+                    app:layout_constraintTop_toTopOf="@id/tvArticleType" />
+
+                <TextView
+                    android:id="@+id/tvArticleCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="@{articleContent.date}"
+                    android:textColor="@color/white_80_percent"
+                    android:textSize="@dimen/margin_12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ivDot"
+                    app:layout_constraintStart_toEndOf="@id/ivDot"
+                    app:layout_constraintTop_toTopOf="@id/ivDot"
+                    tools:text="@string/october_12" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clArticleOpenLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-40dp"
+                android:background="@drawable/bg_bottom_sheet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clArticleOpenLayout1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recArticle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_list_article" />
+
+                <View
+                    android:id="@+id/vArticle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_1dp"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_24dp"
+                    android:background="@color/dark_black_10_percent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recArticle" />
+
+                <TextView
+                    android:id="@+id/tvArticleLike"
+                    style="@style/Likes"
+                    android:drawableStart="@{articleContent.countLikes == 0 ? @drawable/ic_like_unselected : @drawable/ic_like_selected}"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vArticle"
+                   app:setLikes="@{articleContent.countLikes}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.applaunch.bgm.views.fragment.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.applaunch.bgm.views.fragment.onboard.OnBoardingFragment"
+        android:label="OnBoardingFragment"
+        tools:layout="@layout/fragment_on_boarding">
+        <action
+            android:id="@+id/action_onBoardingFragment_to_accessOnBoardingFragment"
+            app:destination="@id/accessOnBoardingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accessOnBoardingFragment"
+        android:name="com.applaunch.bgm.views.fragment.access_onboard.AccessOnBoardingFragment"
+        android:label="fragment_access_on_boarding"
+        tools:layout="@layout/fragment_access_on_boarding" >
+        <action
+            android:id="@+id/action_accessOnBoardingFragment_to_accountActivatedFragment"
+            app:destination="@id/accountActivatedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountActivatedFragment"
+        android:name="com.applaunch.bgm.views.fragment.account_activated.AccountActivatedFragment"
+        android:label="fragment_account_activated"
+        tools:layout="@layout/fragment_account_activated" >
+        <action
+            android:id="@+id/action_accountActivatedFragment_to_homeFragment"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.applaunch.bgm.views.fragment.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_videoFullScreenFragment"
+            app:destination="@id/videoFullScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_challenges"
+        android:name="com.applaunch.bgm.views.fragment.challenge.ChallengesFragment"
+        android:label="fragment_challenge"
+        tools:layout="@layout/fragment_challenge" >
+
+        <action
+            android:id="@+id/action_navigation_challenges_to_stepChallengeFragment"
+            app:destination="@id/stepChallengeFragment" />
+        <action
+            android:id="@+id/action_navigation_challenges_to_relaxationChallengeFragment"
+            app:destination="@id/relaxationChallengeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.applaunch.bgm.views.fragment.favorite.FavoriteFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_navigation_favorites_to_favoriteListFragment"
+            app:destination="@id/favoriteListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_mediathek"
+        android:name="com.applaunch.bgm.views.fragment.meet.MeetFragment"
+        android:label="fragment_media_thek"
+        tools:layout="@layout/fragment_media_thek" >
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteListFragment"
+        android:name="com.applaunch.bgm.views.fragment.favorite.FavoriteListFragment"
+        android:label="fragment_favorite_inside"
+        tools:layout="@layout/fragment_favorite_list" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEdit"
+        android:name="com.applaunch.bgm.views.fragment.favorite.EditCollectionFragment"
+        android:label="fragment_challenge_invite"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_challengeInviteFragment_to_navigation_favorites"
+            app:destination="@id/navigation_favorites" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.applaunch.bgm.views.fragment.setting.SettingFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_navigation_setting_to_settingContactFragment"
+            app:destination="@id/settingContactFragment" />
+        <action
+            android:id="@+id/action_navigation_setting_to_settingTermConditionFragment"
+            app:destination="@id/settingTermConditionFragment" />
+        <action
+            android:id="@+id/action_navigation_setting_to_dataPrivacyFragment"
+            app:destination="@id/dataPrivacyFragment" />
+        <action
+            android:id="@+id/action_navigation_setting_to_settingRestartFragment"
+            app:destination="@id/settingRestartFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.applaunch.bgm.views.fragment.article.ArticleFragment"
+        android:label="ArticleFragment" />
+
+    <fragment
+        android:id="@+id/videoFullScreenFragment"
+        android:name="com.applaunch.bgm.views.fragment.home.HomeVideoFragment"
+        android:label="fragment_video_full_screen"
+        tools:layout="@layout/fragment_video_full_screen" >
+        <action
+            android:id="@+id/action_videoFullScreenFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingContactFragment"
+        android:name="com.applaunch.bgm.views.fragment.setting.SettingContactSupportFragment"
+        android:label="fragment_setting_contact"
+        tools:layout="@layout/fragment_setting_contact_support" >
+        <action
+            android:id="@+id/action_settingContactFragment_to_settingContactFragment2"
+            app:destination="@id/settingContactFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingContactFormFragment"
+        android:name="com.applaunch.bgm.views.fragment.setting.SettingContactFormFragment"
+        android:label="fragment_setting_contact"
+        tools:layout="@layout/fragment_setting_contact_form" >
+        <action
+            android:id="@+id/action_settingContactFragment2_to_navigation_setting"
+            app:destination="@id/navigation_setting" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingTermConditionFragment"
+        android:name="com.applaunch.bgm.views.fragment.setting.SettingTermCondition"
+        android:label="fragment_setting_term_condition"
+        tools:layout="@layout/fragment_setting_term_condition" />
+
+    <fragment
+        android:id="@+id/dataPrivacyFragment"
+        android:name="com.applaunch.bgm.views.fragment.setting.SettingDataPrivacyFragment"
+        android:label="fragment_data_privacy"
+        tools:layout="@layout/fragment_data_privacy" />
+
+    <fragment
+        android:id="@+id/settingRestartFragment"
+        android:name="com.applaunch.bgm.views.fragment.setting.SettingResetAppFragment"
+        android:label="fragment_setting_restart"
+        tools:layout="@layout/fragment_setting_restart" >
+        <action
+            android:id="@+id/action_settingRestartFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/relaxationChallengeFragment"
+        android:name="com.applaunch.bgm.views.fragment.challenge.RelaxationChallengeFragment"
+        android:label="fragment_relaxation_challenge"
+        tools:layout="@layout/fragment_relaxation_challenge">
+        <action
+            android:id="@+id/action_relaxationChallengeFragment_to_relaxSubmitFragment"
+            app:destination="@id/relaxSubmitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stepChallengeFragment"
+        android:name="com.applaunch.bgm.views.fragment.challenge.StepChallengeFragment"
+        android:label="fragment_step_challenge"
+        tools:layout="@layout/fragment_step_challenge">
+        <action
+            android:id="@+id/action_stepChallengeFragment_to_stepSubmitFragment"
+            app:destination="@id/stepSubmitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stepSubmitFragment"
+        android:name="com.applaunch.bgm.views.fragment.challenge.StepSubmitFragment"
+        android:label="StepSubmitFragment" />
+    <fragment
+        android:id="@+id/relaxSubmitFragment"
+        android:name="com.applaunch.bgm.views.fragment.challenge.RelaxSubmitFragment"
+        android:label="RelaxSubmitFragment" />
+    <fragment
+        android:id="@+id/webinarFragment"
+        android:name="com.applaunch.bgm.views.fragment.home.WebinarFragment"
+        android:label="WebinarFragment" />
+
+</navigation>

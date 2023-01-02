@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="FragmentSettingContactSupportBinding">
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="isSuccess"
+            type="Boolean" />
+
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.views.fragment.setting.SettingContactSupportFragment" />
+
+        <variable
+            name="contactData"
+            type="com.applaunch.bgm.model.dto.setting_data.ContactSupportDataModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/screen_background"
+        app:isLoaded="@{isSuccess}"
+        tools:context=".old.ui.setting.SettingContactSupportFragment">
+
+        <include
+            android:id="@+id/commonLayout"
+            layout="@layout/common_layout_heading"
+            bind:title="@{title}" />
+
+        <TextView
+            android:id="@+id/tvMailId"
+            style="@style/HeadingTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_24dp"
+            android:drawablePadding="@dimen/margin_10dp"
+            android:text="@{contactData.email}"
+            android:textColor="@color/dark_black"
+            app:drawableStartCompat="@drawable/ic_mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/commonLayout"
+            tools:text="@string/mail_id" />
+
+        <TextView
+            android:id="@+id/tvPhoneNumber"
+            style="@style/HeadingTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_24dp"
+            android:layout_marginTop="@dimen/margin_24dp"
+            android:drawablePadding="@dimen/margin_10dp"
+            android:text="@{contactData.phone}"
+            android:textColor="@color/dark_black"
+            app:drawableStartCompat="@drawable/ic_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMailId"
+            tools:text="@string/phone_number" />
+
+        <TextView
+            android:id="@+id/tvContactUrl"
+            style="@style/HeadingTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_24dp"
+            android:layout_marginTop="@dimen/margin_24dp"
+            android:drawablePadding="@dimen/margin_10dp"
+            android:text="@{contactData.website}"
+            android:textColor="@color/dark_black"
+            app:drawableStartCompat="@drawable/ic_global"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber"
+            tools:text="@string/contact_url" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnContactForm"
+            style="@style/Button"
+            android:layout_marginHorizontal="@dimen/margin_24dp"
+            android:layout_marginVertical="@dimen/margin_42dp"
+            android:background="@drawable/bg_save_to_favorite"
+            android:text="@string/contact_form"
+            android:onClick="@{clickListener::contactForm}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

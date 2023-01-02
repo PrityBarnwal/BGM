@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="articleType"
+            type="String" />
+        <variable
+            name="articleList"
+            type="com.applaunch.bgm.model.dto.article_data.ArticleDescriptionModel" />
+
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20dp">
+
+        <TextView
+            android:id="@+id/tvDescriptionArticle"
+            style="@style/DescriptionText"
+            android:text="@{articleList.content}"
+            android:visibility='@{articleType == "text" ? View.VISIBLE : View.GONE}'
+            tools:text="@string/content_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/sivArticle"
+            android:layout_width="match_parent"
+            android:layout_height="246dp"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:scaleType="centerCrop"
+            android:visibility='@{articleType == "image" ? View.VISIBLE : View.GONE}'
+            app:imageUrl="@{articleList.content}"
+            app:layout_constraintTop_toBottomOf="@id/tvDescriptionArticle"
+            app:shapeAppearanceOverlay="@style/ShapeAbleCardView" />
+
+        <TextView
+            android:id="@+id/tvImageDescription"
+            style="@style/DescriptionText"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:text="@{articleList.content}"
+            android:visibility='@{articleType == "paragraph" ? View.VISIBLE : View.GONE}'
+            tools:text="@string/content_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sivArticle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

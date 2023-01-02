@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="clickListener"
+            type="com.applaunch.bgm.views.fragment.challenge.RelaxSubmitFragment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.fragment.challenge.RelaxSubmitFragment">
+
+        <include
+            android:id="@+id/commonLayout"
+            layout="@layout/common_layout_heading"
+            bind:title="@{title}" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commonLayout">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/enter_steps"
+            android:textColor="@color/drax"
+            android:textSize="@dimen/_12ssp"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiRelaxStepCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextInputLayout"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:hint="@string/step_count"
+            android:textColorHint="@color/dark_black_40_percent"
+            bind:hintTextColor="@color/grey"
+            bind:boxStrokeWidth="0dp"
+            bind:boxStrokeWidthFocused="0dp"
+            android:background="@color/transparent"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSteps">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etStepCount"
+            style="@style/TextInputEditText"
+            android:inputType="number"
+            android:background="@drawable/bg_edit_text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/clSubmitImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/_40sdp"
+            app:cardCornerRadius="@dimen/margin_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/tiRelaxStepCount">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:foreground="@drawable/ic_rectangle_forground"
+                android:src="@drawable/relaxation_2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginVertical="@dimen/_30sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clSubmitImage">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRelaxSubmit"
+                style="@style/Button"
+                android:layout_width="0dp"
+                android:layout_marginEnd="@dimen/margin_8dp"
+                android:background="@drawable/bg_continue_selected"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/margin_14sp"
+                android:onClick="@{clickListener::btnSubmit}"
+                app:layout_constraintEnd_toStartOf="@id/btnRelaxCancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRelaxCancel"
+                style="@style/Button"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:background="@drawable/bg_save_to_favorite"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="@string/cancel"
+                android:textColor="@color/dark_black"
+                android:textSize="@dimen/margin_14sp"
+                android:onClick="@{clickListener::cancel}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnRelaxSubmit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

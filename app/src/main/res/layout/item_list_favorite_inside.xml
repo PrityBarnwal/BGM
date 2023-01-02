@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.applaunch.bgm.utils.MyUtils"/>
+        <variable
+            name="favoriteItem"
+            type="com.applaunch.bgm.model.dto.favorite_data.FavoriteListDataModel" />
+
+        <variable
+            name="streamType"
+            type="String" />
+        <variable
+            name="clickItemListener"
+            type="com.applaunch.bgm.adapter.recycler.viewholder.FavoriteListViewHolder" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <variable
+            name="isBgSelected"
+            type="Boolean" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/clFavoriteInside"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{isBgSelected?@drawable/bg_item_selected:@drawable/bg_item_unselected}"
+        android:onClick="@{()-> clickItemListener.onItemBgSelected(favoriteItem,itemPosition)}"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        app:cardCornerRadius="@dimen/margin_16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_item_unselected">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivFavoriteInside"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_343dp"
+            app:imageUrl="@{favoriteItem.image}"
+            android:scaleType="centerCrop"
+            android:onClick="@{() -> clickItemListener.navigateFavVideo(favoriteItem,itemPosition,streamType)}"
+            android:foreground="@drawable/ic_rectangle_forground"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{favoriteItem.description.content}"
+            android:textColor="@color/dark_black"
+            android:textSize="@dimen/margin_14sp"
+            android:visibility='@{streamType == "article" ? View.VISIBLE:View.GONE}'
+            app:layout_constraintTop_toBottomOf="@id/ivFavoriteInside"
+            tools:text="@string/desc_text" />
+
+        <ImageView
+            android:id="@+id/playBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_video"
+            android:visibility='@{streamType =="video" ? View.VISIBLE : View.GONE}'
+            app:layout_constraintBottom_toBottomOf="@id/ivFavoriteInside"
+            app:layout_constraintEnd_toEndOf="@id/ivFavoriteInside"
+            app:layout_constraintStart_toStartOf="@id/ivFavoriteInside"
+            app:layout_constraintTop_toTopOf="@id/ivFavoriteInside" />
+
+        <ImageView
+            android:id="@+id/ivFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_14dp"
+            android:layout_marginEnd="@dimen/margin_14dp"
+            android:background="@drawable/bg_favorite"
+            android:padding="@dimen/margin_10dp"
+            android:src="@drawable/ic_favorite_selected"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_48dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ivFavoriteInside">
+
+            <TextView
+                android:id="@+id/tvFavoriteTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                tools:text="@string/rehazentrum_straubing_dr_hierl"
+                android:textColor="@color/white"
+                android:textSize="@dimen/margin_24sp"
+                android:text="@{favoriteItem.title}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvFavoriteType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:fontFamily="@font/inter_regular"
+                tools:text="@string/webinar"
+                android:text="@{favoriteItem.streamType ?? favoriteItem.writtenBy}"
+                android:textColor="@color/white_80_percent"
+                android:textSize="@dimen/margin_12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvFavoriteTitle" />
+
+            <ImageView
+                android:id="@+id/ivDot"
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:src="@drawable/ic_oval"
+                app:layout_constraintBottom_toBottomOf="@id/tvFavoriteType"
+                app:layout_constraintStart_toEndOf="@id/tvFavoriteType"
+                app:layout_constraintTop_toTopOf="@id/tvFavoriteType" />
+
+            <TextView
+                android:id="@+id/tvFavoriteCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:fontFamily="@font/inter_regular"
+                tools:text="@string/total_viewers"
+                android:text="@{MyUtils.convertDate(favoriteItem.date)}"
+                android:textColor="@color/white_80_percent"
+                android:textSize="@dimen/margin_12sp"
+                app:layout_constraintBottom_toBottomOf="@id/ivDot"
+                app:layout_constraintStart_toEndOf="@id/ivDot"
+                app:layout_constraintTop_toTopOf="@id/ivDot" />
+
+            <TextView
+                android:id="@+id/liveStreamingFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:background="@drawable/bg_live"
+                android:drawablePadding="@dimen/margin_4dp"
+                android:fontFamily="@font/inter_semi_bold"
+                android:padding="@dimen/margin_8dp"
+                android:text="@string/live_broadcast"
+                android:textColor="@color/white"
+                android:textSize="@dimen/margin_12sp"
+                android:onClick="@{clickItemListener::navigateFavBroadcast}"
+                android:visibility='@{streamType == "webinar" ? View.VISIBLE : View.GONE}'
+                app:drawableStartCompat="@drawable/ic_live_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvFavoriteType"
+                tools:text="@string/live_broadcast" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvFavoriteLike"
+            style="@style/Likes"
+            app:setLikes="@{favoriteItem.countLikes}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            android:layout_marginStart="@dimen/margin_16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="@dimen/margin_17dp"
+            android:layout_marginVertical="@dimen/margin_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

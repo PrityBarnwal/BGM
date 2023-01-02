@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="settingsList"
+            type="com.applaunch.bgm.model.dto.setting_data.SettingsModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:background="@drawable/bg_plus"
+            android:padding="@dimen/margin_10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivSettings"
+                android:layout_width="@dimen/margin_18dp"
+                android:layout_height="@dimen/margin_15dp"
+                android:src="@drawable/ic_contact"
+                app:imgId="@{settingsList.img}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            style="@style/HeadingTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:text="@{settingsList.title}"
+            android:textColor="@color/dark_black"
+            app:layout_constraintBottom_toBottomOf="@id/clSettings"
+            app:layout_constraintStart_toEndOf="@id/clSettings"
+            app:layout_constraintTop_toTopOf="@id/clSettings" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_1dp"
+            android:layout_marginHorizontal="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:background="@color/dark_black_10_percent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clSettings" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
